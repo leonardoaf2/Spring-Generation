@@ -41,7 +41,7 @@ public class PostagemController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	//criando um método que retorna uma postagem por seu TÍTULO
+	//criando um metodo que retorna uma postagem por seu TÍTULO
 	@GetMapping("/titulo/{titulo}")
 	public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo){
 		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
