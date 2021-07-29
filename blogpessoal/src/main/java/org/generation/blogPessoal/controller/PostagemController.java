@@ -1,8 +1,6 @@
 package org.generation.blogPessoal.controller;
 
-
 import java.util.List;
-
 import org.generation.blogPessoal.model.Postagem;
 import org.generation.blogPessoal.repository.PostagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +39,7 @@ public class PostagemController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	//criando um metodo que retorna uma postagem por seu TÍTULO
+	//criando um método que retorna uma postagem por seu TÍTULO
 	@GetMapping("/titulo/{titulo}")
 	public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo){
 		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
