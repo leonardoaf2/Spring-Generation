@@ -102,15 +102,20 @@ public class UsuarioService {
 				byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
 				String authHeader = "Basic " + new String(encodedAuth);
 
-				usuarioLogin.get().setToken(authHeader);				
+				usuarioLogin.get().setId(usuario.get().getId());				
 				usuarioLogin.get().setNome(usuario.get().getNome());
 				usuarioLogin.get().setSenha(usuario.get().getSenha());
+				usuarioLogin.get().setToken(authHeader);
 				
 				return usuarioLogin;
 
 			}
 		}
-	
+		
+		/**
+		 * Lanço uma Exception do tipo Response Status Unauthorized
+		*/
+		
 		throw new ResponseStatusException(
 				HttpStatus.UNAUTHORIZED, "Usuário ou senha inválidos!", null);
 	}
